@@ -1,8 +1,11 @@
 const { default: mongoose } = require("mongoose");
+require("dotenv").config();
+
+const URL = process.env.DB_URL
 
 const dbConnect = async()=>{
     try {
-        await mongoose.connect('mongodb://localhost:27017/ems')
+        await mongoose.connect(URL)
         console.log('Connected to Mongo database');
         
     } catch (error) {

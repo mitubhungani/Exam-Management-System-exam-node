@@ -1,10 +1,11 @@
 const { Router } = require("express");
-const adminControllers = require('../controller/admin.controller')
+const adminControllers = require('../controller/admin.controller');
+const { role } = require("../middleware/role");
+// const role = require("../middleware/role");
 
 const adminRouter = Router()
 
-adminRouter.get('/',adminControllers.getAdmins)
-adminRouter.post('/signup',adminControllers.createAdmin)
-adminRouter.post('/login',adminControllers.loginAdmin)
+adminRouter.get('/',role,adminControllers.getAdmins)
+
 
 module.exports = adminRouter
