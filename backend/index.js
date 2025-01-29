@@ -12,12 +12,12 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/',isToken,appRouter)
-app.get("/mcq",async(req,res)=>{
-    let mcqs = await MCQ.find();
-    console.log("mcq", mcqs);
-    res.send(mcqs)
+// app.get("/mcq",async(req,res)=>{
+//     let mcqs = await MCQ.find();
+//     console.log("mcq", mcqs);
+//     res.send(mcqs)
     
-})
+// })
 const PORT = process.env.PORT || 8090
 app.listen(PORT,()=>{
     console.log(`Server running on port ${PORT}`)

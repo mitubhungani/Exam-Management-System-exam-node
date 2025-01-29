@@ -21,8 +21,8 @@ exports.getExams = async (req, res) => {
 
 exports.getExamById = async (req, res) => {
   try {
-    let {id} = req.params
-    let exam = await Exam.findById(id).populate("mcqIds");
+    let {examid} = req.params
+    let exam = await Exam.findById(examid).populate("mcqIds");
     res.status(200).json(exam);
   } catch (error) {
     res.status(500).send(error.message);
@@ -31,10 +31,20 @@ exports.getExamById = async (req, res) => {
 
 exports.updateExam = async (req, res) => {
   try {
-    let {id} = req.params
-    console.log("id",id);
-    let exam = await Exam.findByIdAndUpdate(id, req.body, {new: true});
+    let {examid} = req.params
+    console.log("id",examid);
+    let exam = await Exam.findByIdAndUpdate(examid, req.body, {new: true});
     res.status(201).json(exam);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+}
+
+exports.examMcqIds = async (req,res) => {
+  try {
+    let {examid} = req.params
+    let exam = await Exam.findById(examid).populate("mcqIds");
+    res.status(200).json(exam.mcqIds);
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -42,8 +52,8 @@ exports.updateExam = async (req, res) => {
 
 exports.deleteExam = async (req, res) => {
   try {
-    let {id} = req.params
-    let exam = await Exam.findByIdAndDelete(id);
+    let {examid} = req.params
+    let exam = await Exam.findByIdAndDelete(examid);
     res.status(201).json(exam);  
   } catch (error) {
     res.status(500).send(error.message);

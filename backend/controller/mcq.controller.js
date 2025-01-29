@@ -17,6 +17,8 @@ exports.createMcq = async (req, res) => {
 exports.getMcqByExamId = async (req, res) => {
   try {
     let {id} = req.params
+    console.log("id",id);
+    
     let mcqs = await MCQ.findById(id);
     res.status(200).json(mcqs);
   } catch (error) {

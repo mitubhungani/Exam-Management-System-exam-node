@@ -4,6 +4,8 @@ import Signup from './Signup'
 import Login from './Login'
 import AddMcq from './AddMcq'
 import AddExam from './AddExam'
+import Exams from './Exams'
+import OpenExam from './OpenExam'
 
 const Router = () => {
   return (
@@ -13,6 +15,9 @@ const Router = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/addmcq" element={<AddMcq />} />
             <Route path='/addexam' element={<AddExam />} />
+            <Route path='/exams' element={<Exams />} />
+            <Route path='/exams/:examid' element={<OpenExam />} />
+            
         </Routes>
     </div>
   )
