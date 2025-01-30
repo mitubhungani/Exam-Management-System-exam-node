@@ -9,13 +9,13 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const user = { email, password }
-        console.log(user)
+        // console.log(user)
 
         try {
             const res = await axios.post('http://localhost:8090/login', user)
-            console.log(res.data)
+            // console.log(res.data)
             Cookies.set('name', res.data.token)
-            console.log("Token stored:", res.data.token)
+            // console.log("Token stored:", res.data.token)
         } catch (error) {
             console.error("Error during login:", error)
         }

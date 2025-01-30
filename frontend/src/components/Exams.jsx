@@ -22,7 +22,7 @@ const Exams = () => {
         };
 
         const response = await axios.get("http://localhost:8090/exam", config);
-        console.log(response.data);
+        // console.log(response.data);
         setExams(response.data);
       } catch (error) {
         console.error(

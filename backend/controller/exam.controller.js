@@ -32,7 +32,7 @@ exports.getExamById = async (req, res) => {
 exports.updateExam = async (req, res) => {
   try {
     let {examid} = req.params
-    console.log("id",examid);
+    // console.log("id",examid);
     let exam = await Exam.findByIdAndUpdate(examid, req.body, {new: true});
     res.status(201).json(exam);
   } catch (error) {

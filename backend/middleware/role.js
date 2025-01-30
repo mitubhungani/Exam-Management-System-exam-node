@@ -1,5 +1,5 @@
 const role = async (req, res, next) => {
-    console.log("req.body.",req.user);
+    // console.log("req.body.",req.user);
 
     if(req.user.role == "admin"){
         next();
@@ -10,7 +10,7 @@ const role = async (req, res, next) => {
 }
 
 const teacherRole = async (req, res, next) => {
-    console.log("req.body.",req.user);
+    // console.log("req.body.",req.user);
 
     if(req.user.role == "teacher"){
         next();

@@ -17,7 +17,7 @@ exports.createAdmin = async (req, res) => {
         let hash = await bcrypt.hash(password, 10);
         req.body.password = hash;
         let admin = await Admin.create(req.body);
-        console.log(admin)
+        // console.log(admin)
 
         try {
           let token = await jwt.sign(
@@ -31,7 +31,7 @@ exports.createAdmin = async (req, res) => {
             process.env.JWT_SECRET
           );
           admin.token = token;
-          console.log(token)
+          // console.log(token)
           await admin.save();
           res.send({ msg: "User created", admin: admin, token });
         } catch (error) {

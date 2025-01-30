@@ -5,7 +5,7 @@ exports.createMcq = async (req, res) => {
   try {
     let mcq = await MCQ.create(req.body);
     let exam = await Exam.findById(req.body.exam);
-    console.log('exam',exam);
+    // console.log('exam',exam);
     exam.mcqIds.push(mcq._id);
     await exam.save();
     res.status(201).json(mcq);
@@ -17,7 +17,7 @@ exports.createMcq = async (req, res) => {
 exports.getMcqByExamId = async (req, res) => {
   try {
     let {id} = req.params
-    console.log("id",id);
+    // console.log("id",id);
     
     let mcqs = await MCQ.findById(id);
     res.status(200).json(mcqs);
@@ -29,7 +29,7 @@ exports.getMcqByExamId = async (req, res) => {
 exports.getMcqs = async (req, res) => {
   try {
     let mcqs = await MCQ.find();
-    console.log("mcq", mcqs);
+    // console.log("mcq", mcqs);
     
     res.status(200).json(mcqs);
   } catch (error) {

@@ -1,144 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import api from "../service/Handledata";
-// import axios from "axios";
-// import Cookies from 'js-cookie'
-
-// const AddMcq = () => {
-//   let [exams, setExams] = useState([]);
-//   let [formdata, setFormdata] = useState({
-//     title: "",
-//     options: ["", "", "", ""],
-//     ans: ["A", "B", "C", "D"],
-//     marks: "",
-//   });
-
-//   useEffect(() => {
-//     (async function retruveExam() {
-//       let data = await axios.get("http://localhost:8090/exam");
-//       console.log(data.data.exam);
-//       setExams(data);
-
-//     })
-//   }, []);
-
-//   const handleInput = async (e) => {
-//     let { value, name } = e.target;
-//     if (name.startsWith("options")) {
-//       const optionIndex = Number(name.split("[")[1].split("]")[0]);
-//       setFormdata((prev) => {
-//         const updatedOptions = [...prev.options];
-//         updatedOptions[optionIndex] = value;
-//         return setFormdata({ ...prev, options: updatedOptions });
-//       });
-//     }
-//     else{
-
-//         return setFormdata((prev) => ({ ...prev, [name]: value }));
-//     }
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const token = Cookies.get('name')
-//     console.log(token);
-
-//     const config = {
-//       headers: {
-//         Authorization: `Bearer ${token}`, // Add token to the Authorization header
-//       },
-//     };
-
-//     let data={
-//         title:formdata.title,
-//         options:formdata.options,
-//         ans:formdata.ans,
-//         marks:formdata.marks,
-//         exam:formdata.exam
-//     }
-//     console.log(data);
-
-//     let res = await axios.post("http://localhost:8090/exam/addmcq", data,config);
-//     console.log(res.data);
-//   };
-
-//   return (
-//     <div>
-//       <form onSubmit={handleSubmit}>
-//         <input
-//           type="text"
-//           name="title"
-//           onChange={handleInput}
-//           value={formdata?.title}
-//           placeholder="Enter Title"
-//         />
-
-//         <div>
-//           <label>Options</label>
-//           <input
-//             type="text"
-//             name="options[0]"
-//             onChange={handleInput}
-//             placeholder="Enter Option A"
-//             value={formdata?.options.option1}
-//           />
-//           <input
-//             type="text"
-//             name="options[1]"
-//             onChange={handleInput}
-//             placeholder="Enter Option B"
-//             value={formdata?.options.option2}
-//           />
-//           <input
-//             type="text"
-//             name="options[2]"
-//             onChange={handleInput}
-//             placeholder="Enter Option C"
-//             value={formdata?.options.option3}
-//           />
-//           <input
-//             type="text"
-//             name="options[3]"
-//             onChange={handleInput}
-//             placeholder="Enter Option D"
-//             value={formdata?.options.option4}
-//           />
-//         </div>
-//         <div>
-//           <label>Selete Ans:</label>
-//           <select name="ans" onChange={handleInput}>
-//             <option value={formdata?.ans[0]}>A</option>
-//             <option value={formdata?.ans[1]}>B</option>
-//             <option value={formdata?.ans[2]}>C</option>
-//             <option value={formdata?.ans[3]}>D</option>
-//           </select>
-//         </div>
-//         <div>
-//           <label>Exam</label>
-//           <select name="exam" onChange={handleInput}>
-//             {exams.map((elm, index) => (
-//               <option key={elm._id || index} value={elm._id}>
-//                 {elm.exam}
-//               </option>
-//             ))}
-//           </select>
-//         </div>
-
-//         <input
-//           type="number"
-//           name="marks"
-//           onChange={handleInput}
-//           value={formdata?.marks}
-//           min="1"
-//           placeholder="Enter marks"
-//         />
-//         <button type="submit">Add</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default AddMcq;
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -169,7 +28,7 @@ const AddMcq = () => {
         };
 
         const response = await axios.get("http://localhost:8090/exam", config);
-        console.log(response.data);
+        // console.log(response.data);
         setExams(response.data);
       } catch (error) {
         console.error(
@@ -197,7 +56,7 @@ const AddMcq = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = Cookies.get("name");
-    console.log(token);
+    // console.log(token);
 
     const config = {
       headers: {
@@ -214,7 +73,7 @@ const AddMcq = () => {
     };
 
     try {
-      console.log(data);
+      // console.log(data);
       const res = await axios.post(
         "http://localhost:8090/exam/addmcq",
         data,

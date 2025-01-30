@@ -9,7 +9,7 @@ const AddExam = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = Cookies.get('name');
-    console.log(token);
+    // console.log(token);
 
     const config = {
       headers: {
